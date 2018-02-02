@@ -26,6 +26,7 @@ class deepURLManager(models.Manager):
 class deepURL(models.Model):
     url = models.CharField(max_length=254, validators=[validate_url])
     shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
+    fallback_url = models.CharField(max_length=254, validators=[validate_url])
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
