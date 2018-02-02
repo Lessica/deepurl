@@ -35,8 +35,8 @@
             } else if (is_safari() === false) {
                 tip.innerText = "请使用 iOS 上的 Safari 打开。";
             } else {
-                window.location.href = "{{ url }}";
                 window.open("{{ fallback_url }}", "_blank");
+                window.location.href = "{{ url }}";
             }
         </script>
     </body>
