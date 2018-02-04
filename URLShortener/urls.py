@@ -19,6 +19,6 @@ from django.contrib import admin
 from shortener.views import RedirectUrl
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^(?P<shortcode>[a-zA-Z0-9-/]+)/$', RedirectUrl.as_view(), name="scode"),
+    url(r'^deepurl/admin/', admin.site.urls),
+    url(r'^s/(?P<shortcode>[a-zA-Z0-9-/]+)/$', RedirectUrl.as_view(), name="scode"),
 ]
