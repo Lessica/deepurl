@@ -25,16 +25,10 @@
                 var ua = navigator.userAgent;
                 return (/QQ\/([\d\.]+)/.test(ua) || ua.indexOf("MicroMessenger") > -1);
             }
-            function is_safari() {
-                var ua = navigator.userAgent;
-                return ua.indexOf("Safari") > -1 && ua.indexOf("Mobile") > -1;
-            }
             window.location.href = "{{ url }}";
             var tip = document.getElementById("jump-tip");
             if (is_weixin()) {
                 tip.innerText = "请点击右上角按钮，选择“用 Safari 打开”。";
-            } else if (is_safari() === false) {
-                tip.innerText = "请使用 iOS 上的 Safari 打开。";
             }
         </script>
     </body>
