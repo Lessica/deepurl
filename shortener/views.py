@@ -1,3 +1,4 @@
+import urllib
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views import View
@@ -11,7 +12,11 @@ class RedirectUrl(View):
         qs = deepURL.objects.filter(shortcode=shortcode)
         if qs.exists():
             obj = qs.first()
-            context = {'url': obj.url, 'fallback_url': obj.fallback_url}
+            get_args = urllib.urlencode(request.GET)
+            url = obj.url
+            if len(get_args) > 0:
+                url = obj.url + '?' + get_args
+            context = {'url': url, 'fallback_url': obj.fallback_url}
             template = "shortener/jump.html"
             return render(request, template, context)
         return Http404
