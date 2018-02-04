@@ -25,7 +25,7 @@
                 var ua = navigator.userAgent;
                 return (/QQ\/([\d\.]+)/.test(ua) || ua.indexOf("MicroMessenger") > -1);
             }
-            window.location.href = "{{ url }}";
+            window.location.href = "{{ jump_url|safe }}";
             var tip = document.getElementById("jump-tip");
             if (is_weixin()) {
                 tip.innerText = "请点击右上角按钮，选择“用 Safari 打开”。";

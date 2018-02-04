@@ -12,11 +12,11 @@ class RedirectUrl(View):
         qs = deepURL.objects.filter(shortcode=shortcode)
         if qs.exists():
             obj = qs.first()
-            get_args = urllib.urlencode(request.GET)
-            url = obj.url
+            get_args = request.GET.urlencode()
+            jump_url = obj.url
             if len(get_args) > 0:
-                url = obj.url + '?' + get_args
-            context = {'url': url, 'fallback_url': obj.fallback_url}
+                jump_url = obj.url + '?' + get_args
+            context = {'jump_url': jump_url, 'fallback_url': obj.fallback_url}
             template = "shortener/jump.html"
             return render(request, template, context)
         return Http404
